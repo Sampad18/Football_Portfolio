@@ -704,3 +704,80 @@ kbd {
     padding: 9px 10px;
   }
 }
+
+/* ---------- phone tweaks ---------- */
+
+.keys-touch {
+  display: none;
+  grid-template-columns: 1fr;
+}
+
+.narrow-only {
+  display: none;
+}
+
+.brand strong,
+.score,
+.top-actions .btn {
+  white-space: nowrap;
+}
+
+@media (pointer: coarse) {
+  .keys-desktop {
+    display: none;
+  }
+
+  .keys-touch {
+    display: grid;
+  }
+
+  .panel-foot {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .wide-only {
+    display: none;
+  }
+
+  .narrow-only {
+    display: inline;
+  }
+
+  .topbar {
+    padding: 10px;
+    gap: 6px;
+  }
+
+  .brand {
+    padding: 5px 12px 5px 5px;
+    gap: 8px;
+    font-size: 0.9rem;
+  }
+
+  .badge {
+    width: 32px;
+    height: 32px;
+  }
+
+  .top-actions {
+    gap: 6px;
+  }
+
+  .menu {
+    top: 60px;
+    right: 10px;
+  }
+}
+
+/* keep controls clear of the phone's home bar and notch */
+.joystick {
+  left: calc(22px + env(safe-area-inset-left));
+  bottom: calc(26px + env(safe-area-inset-bottom));
+}
+
+.kick-btn {
+  right: calc(26px + env(safe-area-inset-right));
+  bottom: calc(44px + env(safe-area-inset-bottom));
+}

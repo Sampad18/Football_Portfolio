@@ -17,7 +17,7 @@ function StartScreen() {
         <p className="start-copy">
           This portfolio is a football pitch. Run to a glowing ring to open a section, or shoot the ball into a goal.
         </p>
-        <ul className="keys">
+        <ul className="keys keys-desktop">
           <li>
             <kbd>W</kbd>
             <kbd>A</kbd>
@@ -32,6 +32,17 @@ function StartScreen() {
           </li>
           <li>
             <kbd>E</kbd> <span>open section</span>
+          </li>
+        </ul>
+        <ul className="keys keys-touch">
+          <li>
+            <kbd>Joystick</kbd> <span>move, push fully to sprint</span>
+          </li>
+          <li>
+            <kbd>Kick</kbd> <span>kick the ball</span>
+          </li>
+          <li>
+            <kbd>Tap</kbd> <span>the Open button to read a section</span>
           </li>
         </ul>
         <button className="btn btn-primary" onClick={start} disabled={!ready}>
@@ -90,7 +101,10 @@ export function Hud() {
             ⚽ {goals}
           </span>
           <button className="btn" onClick={toggleMute} aria-pressed={muted}>
-            {muted ? 'Sound off' : 'Sound on'}
+            <span className="wide-only">{muted ? 'Sound off' : 'Sound on'}</span>
+            <span className="narrow-only" aria-label={muted ? 'Sound off' : 'Sound on'}>
+              {muted ? '🔇' : '🔊'}
+            </span>
           </button>
           <button className="btn" onClick={toggleMenu} aria-expanded={menuOpen}>
             {menuOpen ? 'Close' : 'Sections'}

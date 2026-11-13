@@ -75,7 +75,9 @@ export function Player() {
       x /= len
       z /= len
     }
-    const top = k.ShiftLeft || k.ShiftRight ? SPRINT : WALK
+    // sprint with Shift, or by pushing the touch joystick all the way
+    const pushed = Math.hypot(refs.joystick.x, refs.joystick.z) > 0.92
+    const top = k.ShiftLeft || k.ShiftRight || pushed ? SPRINT : WALK
     const vel = rb.linvel()
     rb.setLinvel({ x: x * top, y: vel.y, z: z * top }, true)
 
@@ -115,7 +117,10 @@ export function Player() {
     const follow = 1 - Math.exp(-dt * 4)
     camTarget.x += (THREE.MathUtils.clamp(p.x, -29, 29) - camTarget.x) * follow
     camTarget.z += (THREE.MathUtils.clamp(p.z, -18, 20) - camTarget.z) * follow
-    state.camera.position.set(camTarget.x + CAM_OFFSET.x, CAM_OFFSET.y, camTarget.z + CAM_OFFSET.z)
+    // on tall phone screens, pull the camera back so more of the pitch fits across
+    const aspect = state.size.width / state.size.height
+    const zoom = aspect < 1 ? 1.45 : 1
+    state.camera.position.set(camTarget.x + CAM_OFFSET.x, CAM_OFFSET.y * zoom, camTarget.z + CAM_OFFSET.z * zoom)
     state.camera.lookAt(camTarget.x, 1, camTarget.z)
 
     // which section ring is the player standing in?
