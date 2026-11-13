@@ -10,6 +10,7 @@ import { Ball } from './Ball.jsx'
 import { Npcs } from './Npcs.jsx'
 import { Cones } from './Cones.jsx'
 import { Bot } from './Bot.jsx'
+import { DayNight } from './DayNight.jsx'
 
 const SKY = '#9bdcff'
 
@@ -20,21 +21,7 @@ export function Experience() {
     >
       <color attach="background" args={[SKY]} />
       <fog attach="fog" args={[SKY, 70, 170]} />
-      <hemisphereLight args={['#e8f7ff', '#5fae52', 1.1]} />
-      <directionalLight
-        position={[22, 34, 18]}
-        intensity={2.4}
-        color="#fff4dc"
-        castShadow
-        shadow-mapSize={[2048, 2048]}
-        shadow-camera-left={-48}
-        shadow-camera-right={48}
-        shadow-camera-top={36}
-        shadow-camera-bottom={-44}
-        shadow-camera-near={1}
-        shadow-camera-far={110}
-        shadow-bias={-0.0004}
-      />
+      <DayNight />
       <Stadium />
       <Zones />
       <Suspense fallback={null}>

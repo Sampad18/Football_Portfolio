@@ -191,25 +191,6 @@ function CornerFlag({ x, z, color = '#ffd43b', big = false }) {
   )
 }
 
-function Floodlight({ x, z }) {
-  return (
-    <group position={[x, 0, z]}>
-      <mesh position={[0, 8, 0]} castShadow>
-        <cylinderGeometry args={[0.25, 0.4, 16, 6]} />
-        <meshStandardMaterial color="#868e96" flatShading />
-      </mesh>
-      <mesh position={[0, 16.4, 0.3]} rotation={[0.5, x > 0 ? -0.5 : 0.5, 0]} castShadow>
-        <boxGeometry args={[4, 2.2, 0.5]} />
-        <meshStandardMaterial color="#495057" />
-      </mesh>
-      <mesh position={[0, 16.3, 0.6]} rotation={[0.5, x > 0 ? -0.5 : 0.5, 0]}>
-        <boxGeometry args={[3.5, 1.7, 0.2]} />
-        <meshBasicMaterial color="#fff7d6" />
-      </mesh>
-    </group>
-  )
-}
-
 function Scenery() {
   const { trees, hills, bushes } = useMemo(() => {
     const rand = seeded(42)
@@ -318,8 +299,6 @@ export function Stadium() {
       <CornerFlag x={30} z={-20} />
       <CornerFlag x={-30} z={20} />
       <CornerFlag x={30} z={20} color="#63e6be" big />
-      <Floodlight x={-41} z={-30} />
-      <Floodlight x={41} z={-30} />
       <Scenery />
       <Clouds />
     </>

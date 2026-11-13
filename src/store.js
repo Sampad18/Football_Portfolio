@@ -19,6 +19,13 @@ export const useGame = create((set, get) => ({
   goals: 0,
   celebrating: false,
   setReady: () => set({ ready: true }),
+  night: false, // which mode the scene is heading to
+  nightChosen: false, // true once the visitor has used the day/night button
+  toggleNight: () => set((s) => ({ night: !s.night, nightChosen: true })),
+  // called by the 90-second timer; does nothing once the visitor has picked a mode
+  autoFlipNight: () => {
+    if (!get().nightChosen) set((s) => ({ night: !s.night }))
+  },
   muted: false,
   toggleMute: () => {
     const muted = !get().muted

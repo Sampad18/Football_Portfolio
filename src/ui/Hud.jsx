@@ -80,6 +80,8 @@ export function Hud() {
   const celebrating = useGame((s) => s.celebrating)
   const open = useGame((s) => s.open)
   const toggleMenu = useGame((s) => s.toggleMenu)
+  const night = useGame((s) => s.night)
+  const toggleNight = useGame((s) => s.toggleNight)
   const muted = useGame((s) => s.muted)
   const toggleMute = useGame((s) => s.toggleMute)
 
@@ -101,6 +103,14 @@ export function Hud() {
           <span className="score" title="Goals scored">
             ⚽ {goals}
           </span>
+          <button
+            className="btn btn-icon"
+            onClick={toggleNight}
+            aria-label={night ? 'Switch to day' : 'Switch to night'}
+            title={night ? 'Switch to day' : 'Switch to night'}
+          >
+            {night ? '☀️' : '🌙'}
+          </button>
           <button className="btn" onClick={toggleMute} aria-pressed={muted}>
             <span className="wide-only">{muted ? 'Sound off' : 'Sound on'}</span>
             <span className="narrow-only" aria-label={muted ? 'Sound off' : 'Sound on'}>

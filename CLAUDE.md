@@ -57,7 +57,8 @@ Units are roughly metres. The pitch is 60 by 40: x runs from -30 (west goal) to 
 | `src/chat/` | The bot's answer logic: `ask.js` (backend, then fallback) and `localAnswer.js` (keyword matcher). |
 | `api/chat.js` | Vercel function that answers with DeepSeek, grounded in the knowledge file. |
 | `src/game/Bot.jsx`, `src/ui/ChatPanel.jsx` | The robot character and its chat panel. |
-| `src/game/Experience.jsx` | The canvas, lights, sky, and which objects are in the physics world. |
+| `src/game/Experience.jsx` | The canvas and which objects are in the physics world. |
+| `src/game/DayNight.jsx` | All lighting: sun, moon, sky colour, stars, floodlights, and the day/night transition. |
 | `src/game/Field.jsx` | Grass, markings, ground and wall colliders. |
 | `src/game/Stadium.jsx` | Scenery with no physics: stand, crowd, ad boards, scoreboard, dugout, flags, trees, clouds. |
 | `src/game/Footballer.jsx` | The character model and its limb animation. Used by the player, teammates, keepers and referee. |
@@ -115,6 +116,17 @@ Units are roughly metres. The pitch is 60 by 40: x runs from -30 (west goal) to 
 - Sounds are made in code in `sound.js`. Browsers only allow audio after a click, so the audio context is created in `start()` (the Kick off button).
 - **Keep sounds quiet.** High tones sound much louder than their number suggests. The whistle's gain is 0.025; Sampad found 0.16 and 0.08 too loud. Start new sounds at a similar level.
 - Every sound must respect the Sound on/off button (`muted`).
+
+## Day and night
+
+The pitch switches between day and night (`src/game/DayNight.jsx`). That file owns every light in the scene: the sun and moon, the sky and fog colour, the stars, and the four floodlights.
+
+- `night` in the store is the mode the scene is heading to. `DayNight.jsx` eases an `amount` from 0 (day) to 1 (night) over 7 seconds, passing through an orange dusk at the halfway point, so the change is a visible sunset and not a cut. `refs.nightAmount` exposes it.
+- **The mode flips every 90 seconds on a timer** (`App.jsx`). **Once a visitor clicks the day/night button, the timer stops changing it** (`nightChosen` in the store). Keep both behaviours.
+- The floodlights come on one after another once it is getting dark. Each one stutters, then warms up over about three seconds from a cold blue to warm white (`lampPower`). They cut out quickly when day returns.
+- Night must still read as night: the pitch is lit in pools by the floodlights and the surroundings stay dark. Do not raise `FLOOD_INTENSITY` until the pitch looks like daytime.
+- Things that should glow at night (section rings, labels, the scoreboard, the robot's face) use `meshBasicMaterial`, which ignores lighting. Things that should go dark use `meshStandardMaterial`.
+- Add new lights to `DayNight.jsx`, not to other files, and drive them from `amount`.
 
 ## The chat bot
 
