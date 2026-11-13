@@ -15,6 +15,7 @@ const STOP = new Set(
 const normalise = (text) =>
   text
     .toLowerCase()
+    .replace(/favorite/g, 'favourite') // accept both spellings
     .replace(/[^a-z0-9+.#£ ]+/g, ' ')
     .replace(/\s+/g, ' ')
     .trim()

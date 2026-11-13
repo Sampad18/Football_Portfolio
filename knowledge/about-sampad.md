@@ -85,9 +85,44 @@ Keywords: skills, skill, tools, tech stack, technologies, programming, languages
 Sampad's skills fall into four groups. Data analytics and BI: Tableau (advanced), MS Excel (expert), Power BI and Think-Cell. Programming and databases: Python, SQL (MySQL and Teradata), C++, JavaScript, and he is learning R. Frameworks and methods: Lean Six Sigma (Green Belt), strategic and operations management, and risk management. Tools: Git, Jira, Confluence, SpringBoot and SAP basics.
 
 ## Football
-Keywords: football, soccer, play, captain, team, sport, sports, championship, odisha, hobby, hobbies, interests, free time, pitch
+Keywords: football, soccer, play football, captain, captained, championship, odisha, pitch, institute team, footballer
 
 Football is a big part of Sampad's life, which is why this portfolio is a pitch. He captained the NIT Rourkela institute football team in 2021 to 2022 and played for the institute team at Imperial College. His team was runner-up in the Odisha state-level football championship in January 2024, where 28 districts took part.
+
+## Favourite football team and players
+Keywords: favourite team, real madrid, madrid, favourite player, favourite footballer, ronaldo, cristiano, mbappe, vinicius, haaland, bellingham, club, supports, support, favourite game, favourite sport, best player, players
+
+Sampad's favourite game is football and his favourite team is Real Madrid. His favourite player is Cristiano Ronaldo, because he thinks Ronaldo is the best. He also likes Mbappe, Vinicius Jr., Haaland and Jude Bellingham.
+
+## Watching the FIFA World Cup
+Keywords: world cup, fifa, fifa world cup, watched, stadium, live match, brazil, japan, norway, ivory coast, egypt, australia, penalties, usa trip, united states, america
+
+Sampad went to watch the FIFA World Cup in the United States. He saw Brazil against Japan and Norway against Ivory Coast, and the last match he watched was Egypt against Australia, which Egypt won on penalties.
+
+## Other sports and chess
+Keywords: sports, sport, other sports, cricket, badminton, tennis, volleyball, chess, chess rating, rating, rapid, elo, games, game, plays
+
+Apart from football, Sampad plays cricket, badminton, tennis, volleyball and chess, and he is happy to try any sport. His rapid chess rating is 1580, close to 1600.
+
+## Favourite food and drink
+Keywords: food, eat, eats, favourite food, dish, cuisine, biryani, chicken biryani, meal, drink, drinks, favourite drink, mojito, virgin mojito, long island, beverage, cocktail
+
+Sampad's favourite food is chicken biryani. His favourite drink is probably a virgin mojito or a Long Island iced tea.
+
+## Hobbies and interests
+Keywords: hobby, hobbies, interests, interest, free time, spare time, fun, outside work, cooking, cook, reading, read, books, book, non-fiction, nonfiction, likes, enjoy, enjoys
+
+Outside work, Sampad likes cooking, reading and travelling, along with playing sport. He reads a lot of non-fiction books.
+
+## Travel
+Keywords: travel, travelling, traveling, travelled, traveled, trips, trip, places, visited, visit, holiday, edinburgh, leeds, lake district, peak district, india travel
+
+Sampad likes travelling a lot. He has travelled to many places in India and to the northern parts of the UK, including Edinburgh, Leeds, the Lake District and the Peak District.
+
+## Family
+Keywords: family, brother, sibling, siblings, parents, mother, father, mum, dad, grandpa, grandfather, grandparent, relatives
+
+Sampad's family lives in India. He has a younger brother, his mother, his father and his grandpa.
 
 ## Volunteering and other activities
 Keywords: volunteer, volunteering, teaching, taught, nss, aec library, library, books, extracurricular, extra-curricular, activities, consulting club, community
