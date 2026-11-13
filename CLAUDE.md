@@ -53,6 +53,10 @@ Units are roughly metres. The pitch is 60 by 40: x runs from -30 (west goal) to 
 | `src/content.js` | All text and data: profile, zone positions and colours, section content. Content changes happen here only. |
 | `src/store.js` | Shared state (zustand) and `refs`, the mutable handles read every frame. |
 | `src/sound.js` | Sounds generated with the Web Audio API. No audio files. |
+| `knowledge/about-sampad.md` | Everything the chat bot is allowed to say. |
+| `src/chat/` | The bot's answer logic: `ask.js` (backend, then fallback) and `localAnswer.js` (keyword matcher). |
+| `api/chat.js` | Vercel function that answers with DeepSeek, grounded in the knowledge file. |
+| `src/game/Bot.jsx`, `src/ui/ChatPanel.jsx` | The robot character and its chat panel. |
 | `src/game/Experience.jsx` | The canvas, lights, sky, and which objects are in the physics world. |
 | `src/game/Field.jsx` | Grass, markings, ground and wall colliders. |
 | `src/game/Stadium.jsx` | Scenery with no physics: stand, crowd, ad boards, scoreboard, dugout, flags, trees, clouds. |
@@ -111,6 +115,22 @@ Units are roughly metres. The pitch is 60 by 40: x runs from -30 (west goal) to 
 - Sounds are made in code in `sound.js`. Browsers only allow audio after a click, so the audio context is created in `start()` (the Kick off button).
 - **Keep sounds quiet.** High tones sound much louder than their number suggests. The whistle's gain is 0.025; Sampad found 0.16 and 0.08 too loud. Start new sounds at a similar level.
 - Every sound must respect the Sound on/off button (`muted`).
+
+## The chat bot
+
+A robot stands just outside the far touchline (`Bot.jsx`). Its ring opens a chat panel (`ChatPanel.jsx`) where visitors ask about Sampad.
+
+- **The bot answers only from `knowledge/about-sampad.md`.** That file is the single source of what it may say. If something is not written there, the bot says it doesn't know. Never loosen this: no general knowledge, no guessing, no off-topic help.
+- **To teach the bot something, edit that file only.** Each topic is a `## Title`, a `Keywords:` line, and a short answer. Sampad will add personal topics (favourite food, games) himself or ask for them.
+- **There are two answer engines, and both read the same file:**
+  - `src/chat/localAnswer.js` matches the question against the `Keywords:` lines and returns that section's text. It runs in the browser, costs nothing, and cannot go off-topic. It is the fallback.
+  - `api/chat.js` is a Vercel function that sends the question and the notes to DeepSeek's chat API (`https://api.deepseek.com/chat/completions`) with a strict system prompt. It is used only when `DEEPSEEK_API_KEY` is set in the Vercel project. Otherwise it returns 503 and the site uses the local engine.
+- `src/chat/ask.js` tries the DeepSeek backend first and falls back to the local engine. A failed or unreachable backend also falls back, so the chat never breaks.
+- Sampad chose DeepSeek for the backend. Do not switch providers unless he asks. The model defaults to `deepseek-flash` and can be changed with the `CHAT_MODEL` environment variable.
+- The function calls DeepSeek with plain `fetch`, so there is no SDK dependency. DeepSeek renames models from time to time: check https://api-docs.deepseek.com before changing the model name.
+- Sampad adds the API key himself in Vercel's settings. Never ask him to paste a key into chat, and never put one in the repo.
+- The backend caps question length, conversation length and requests per minute. Keep those caps.
+- When a text field has focus, game keys must not fire (`Player.jsx` checks the event target).
 
 ## Privacy and content
 

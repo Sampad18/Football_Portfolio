@@ -1,6 +1,7 @@
 import { CONTENT, PROFILE, ZONES } from '../content.js'
 import { refs, useGame } from '../store.js'
 import { Panel } from './Panel.jsx'
+import { ChatPanel } from './ChatPanel.jsx'
 import { Joystick } from './Joystick.jsx'
 
 function StartScreen() {
@@ -118,7 +119,7 @@ export function Hud() {
 
       {near && !openZone && !celebrating && (
         <button className="prompt" style={{ '--zone': near.color }} onClick={() => open(near.id)}>
-          <kbd>E</kbd> Open {near.label}
+          <kbd>E</kbd> {near.prompt || `Open ${near.label}`}
         </button>
       )}
 
@@ -143,7 +144,7 @@ export function Hud() {
         </div>
       )}
 
-      {openZone && <Panel zone={ZONES.find((z) => z.id === openZone)} data={CONTENT[openZone]} />}
+      {openZone && (open_ => (open_.chat ? <ChatPanel zone={open_} /> : <Panel zone={open_} data={CONTENT[openZone]} />))(ZONES.find((z) => z.id === openZone))}
     </div>
   )
 }

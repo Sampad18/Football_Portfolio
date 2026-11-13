@@ -22,10 +22,16 @@ export function Player() {
 
   useEffect(() => {
     const down = (e) => {
-      keys.current[e.code] = true
       const s = useGame.getState()
+      // while someone is typing in the chat box, keys belong to the text field
+      const tag = e.target?.tagName
+      if (tag === 'INPUT' || tag === 'TEXTAREA') {
+        if (e.code === 'Escape' && s.openZone) s.close()
+        return
+      }
+      keys.current[e.code] = true
       if (!s.started) return
-      if (e.code === 'Space') {
+      if (e.code === 'Space' && !s.openZone && !s.menuOpen) {
         e.preventDefault()
         refs.kick = true
       }

@@ -70,11 +70,12 @@ function Zone({ zone }) {
           <meshBasicMaterial color={zone.color} transparent opacity={0.16} depthWrite={false} />
         </mesh>
       </group>
-      <mesh ref={gem} position={[0, 3.3, 0]} castShadow>
+      {/* zones with their own landmark (like the robot) hide the floating gem */}
+      <mesh ref={gem} position={[0, 3.3, 0]} castShadow visible={!zone.landmark}>
         <octahedronGeometry args={[0.55, 0]} />
         <meshStandardMaterial color={zone.color} flatShading emissive={zone.color} emissiveIntensity={0.35} />
       </mesh>
-      <sprite ref={label} position={[0, 4.7, 0]} scale={[labelTex.aspect * 0.055, 0.055, 1]}>
+      <sprite ref={label} position={zone.labelOffset || [0, 4.7, 0]} scale={[labelTex.aspect * 0.055, 0.055, 1]}>
         <spriteMaterial map={active ? labelTex.on : labelTex.off} depthWrite={false} sizeAttenuation={false} />
       </sprite>
     </group>

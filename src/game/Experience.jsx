@@ -9,6 +9,7 @@ import { Player } from './Player.jsx'
 import { Ball } from './Ball.jsx'
 import { Npcs } from './Npcs.jsx'
 import { Cones } from './Cones.jsx'
+import { Bot } from './Bot.jsx'
 
 const SKY = '#9bdcff'
 
@@ -44,6 +45,7 @@ export function Experience() {
           <Ball />
           <Npcs />
           <Cones />
+          <Bot />
         </Physics>
       </Suspense>
     </Canvas>

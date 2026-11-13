@@ -89,6 +89,22 @@ For something solid that never moves, use `type="fixed"`. For something that sho
 4. Call it from the store action that represents the event (the whistle is called in `scoreGoal`), not from a component.
 5. You cannot hear the result. Confirm it was triggered (`playWhistle()` returns true) and tell Sampad the sound itself needs his ears.
 
+## Teach the chat bot something new
+
+1. Open `knowledge/about-sampad.md` and add a section:
+
+   ```
+   ## Favourite food
+   Keywords: food, eat, favourite food, dish, cuisine
+
+   Sampad's favourite food is ...
+   ```
+
+2. Write the answer as the bot should say it: third person, one to three sentences, only facts Sampad gave you.
+3. Choose keywords people would type. Single words match word by word; phrases with spaces must appear in the question as written. Avoid very general phrases such as "tell me about", which steal questions from other sections.
+4. Test the local engine in the browser: open the chat, ask the new question in two or three different wordings, and ask one unrelated question to confirm it is still refused.
+5. Do not edit the system prompt in `api/chat.js` or the matcher to add facts. Facts live in the knowledge file only.
+
 ## Add a control
 
 1. Keyboard: handle the key in the `keydown` listener in `Player.jsx`, by `e.code`.

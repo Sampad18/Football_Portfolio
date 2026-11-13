@@ -52,6 +52,18 @@ export const ZONES = [
     radius: 3.2,
   },
   {
+    id: 'chat',
+    label: 'Ask the Bot',
+    hint: 'Sideline robot',
+    prompt: 'Talk to the bot',
+    color: '#f783ac',
+    position: [3, -18.4],
+    radius: 2.6,
+    chat: true, // opens the chat panel instead of a content panel
+    landmark: true, // the robot marks this spot, so no floating gem
+    labelOffset: [0, 4.9, -2.1], // put the label above the robot, not above the ring
+  },
+  {
     id: 'contact',
     label: 'Contact',
     hint: 'Corner flag',
@@ -60,6 +72,17 @@ export const ZONES = [
     radius: 3.2,
   },
 ]
+
+// Where the robot stands, just outside the far touchline behind its ring.
+export const BOT_POSITION = [3, -20.5]
+
+export const CHAT = {
+  kicker: 'Sideline robot',
+  title: 'Ask the Bot',
+  greeting: "Hi! I'm Sampad's sideline bot. Ask me about his work, projects, skills, education or football.",
+  note: 'I only answer from the notes Sampad has given me.',
+  suggestions: ['What does Sampad do at Tesco?', 'Which projects has he built?', 'What are his skills?', 'Does he play football?'],
+}
 
 export const CONTENT = {
   about: {
